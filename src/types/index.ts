@@ -12,14 +12,13 @@ export type ProgressStatus = "locked" | "current" | "completed";
 // Database Models
 // -----------------------------
 
+export type InterestTag = "dinosaur" | "vehicle" | "animal";
+
 export interface Child {
   id: string;
-  parent_id: string | null;
-
   name: string;
-
-  interest_tag: Interest;
-
+  interest_tag: InterestTag;
+  parent_id: string | null;
   created_at: string;
 }
 
