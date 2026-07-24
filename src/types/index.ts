@@ -88,6 +88,20 @@ export interface SocialStory {
   created_at: string;
 }
 
+export interface ProgressLesson {
+  lesson_id: string;
+  status: "locked" | "current" | "completed";
+  completed_at: string | null;
+
+  lessons: {
+    id: string;
+    title_np: string;
+    description_np: string;
+    activity_type: "matching" | "counting" | "sequencing";
+    interest_tag: InterestTag | null;
+    sort_order: number;
+  };
+}
 // -----------------------------
 // UI Types
 // -----------------------------

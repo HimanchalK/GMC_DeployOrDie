@@ -8,6 +8,7 @@ import { ProgressIndicator } from "@/components/onboarding/ProgressIndicator";
 import { NameForm } from "@/components/onboarding/NameForm";
 import { InterestSelector } from "@/components/onboarding/InterestSelector";
 import { createChild } from "@/services/children";
+import { initializeProgress } from "@/services/progress";
 
 type Interest = "dinosaur" | "vehicle" | "animal";
 
@@ -38,6 +39,9 @@ export default function OnboardingPage() {
         name,
         interest_tag: interest,
       });
+
+      // Create initial lesson progress
+      await initializeProgress(child.id);
 
       localStorage.setItem("childId", child.id);
 
