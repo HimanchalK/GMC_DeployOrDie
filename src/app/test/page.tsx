@@ -1,16 +1,22 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 import { supabase } from "@/lib/supabase/client";
 
-export default function Test() {
-  async function check() {
-    console.log(supabase);
-  }
+export default function TestPage() {
+  useEffect(() => {
+    async function load() {
+      const { data, error } = await supabase
+        .from("lessons")
+        .select("*")
+        .order("sort_order");
 
-  return (
-    <div>
-      <Button onClick={check}>Test</Button>
-    </div>
-  );
+      console.log(data);
+      console.log(error);
+    }
+
+    load();
+  }, []);
+
+  return <div>Check console</div>;
 }
