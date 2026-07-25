@@ -1,0 +1,148 @@
+[
+  {
+    "theme": "dinosaur",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "dinosaur/dinosaur1.png",
+    "correct": "dinosaur/dinosaur1.png",
+    "options": [
+      "dinosaur/dinosaur1.png",
+      "dinosaur/dinosaur2.png",
+      "dinosaur/dinosaur3.png",
+      "dinosaur/dinosaur4.png"
+    ]
+  },
+  {
+    "theme": "dinosaur",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "dinosaur/dinosaur2.png",
+    "correct": "dinosaur/dinosaur2.png",
+    "options": [
+      "dinosaur/dinosaur2.png",
+      "dinosaur/dinosaur1.png",
+      "dinosaur/dinosaur3.png",
+      "dinosaur/dinosaur4.png"
+    ]
+  },
+  {
+    "theme": "dinosaur",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "dinosaur/dinosaur3.png",
+    "correct": "dinosaur/dinosaur3.png",
+    "options": [
+      "dinosaur/dinosaur3.png",
+      "dinosaur/dinosaur1.png",
+      "dinosaur/dinosaur2.png",
+      "dinosaur/dinosaur4.png"
+    ]
+  },
+  {
+    "theme": "dinosaur",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "dinosaur/dinosaur4.png",
+    "correct": "dinosaur/dinosaur4.png",
+    "options": [
+      "dinosaur/dinosaur4.png",
+      "dinosaur/dinosaur1.png",
+      "dinosaur/dinosaur2.png",
+      "dinosaur/dinosaur3.png"
+    ]
+  },
+
+  {
+    "theme": "vehicle",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "vehicle/vehicle1.png",
+    "correct": "vehicle/vehicle1.png",
+    "options": [
+      "vehicle/vehicle1.png",
+      "vehicle/vehicle2.png",
+      "vehicle/vehicle3.png",
+      "vehicle/vehicle4.png"
+    ]
+  },
+  {
+    "theme": "vehicle",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "vehicle/vehicle2.png",
+    "correct": "vehicle/vehicle2.png",
+    "options": [
+      "vehicle/vehicle2.png",
+      "vehicle/vehicle1.png",
+      "vehicle/vehicle3.png",
+      "vehicle/vehicle4.png"
+    ]
+  },
+  {
+    "theme": "vehicle",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "vehicle/vehicle3.png",
+    "correct": "vehicle/vehicle3.png",
+    "options": [
+      "vehicle/vehicle3.png",
+      "vehicle/vehicle1.png",
+      "vehicle/vehicle2.png",
+      "vehicle/vehicle4.png"
+    ]
+  },
+  {
+    "theme": "vehicle",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "vehicle/vehicle4.png",
+    "correct": "vehicle/vehicle4.png",
+    "options": [
+      "vehicle/vehicle4.png",
+      "vehicle/vehicle1.png",
+      "vehicle/vehicle2.png",
+      "vehicle/vehicle3.png"
+    ]
+  },
+
+  {
+    "theme": "animal",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "animal/animal1.png",
+    "correct": "animal/animal1.png",
+    "options": [
+      "animal/animal1.png",
+      "animal/animal2.png",
+      "animal/animal3.png",
+      "animal/animal4.png"
+    ]
+  },
+  {
+    "theme": "animal",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "animal/animal2.png",
+    "correct": "animal/animal2.png",
+    "options": [
+      "animal/animal2.png",
+      "animal/animal1.png",
+      "animal/animal3.png",
+      "animal/animal4.png"
+    ]
+  },
+  {
+    "theme": "animal",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "animal/animal3.png",
+    "correct": "animal/animal3.png",
+    "options": [
+      "animal/animal3.png",
+      "animal/animal1.png",
+      "animal/animal2.png",
+      "animal/animal4.png"
+    ]
+  },
+  {
+    "theme": "animal",
+    "prompt_np": "कुन चित्र मिल्छ?",
+    "image": "animal/animal4.png",
+    "correct": "animal/animal4.png",
+    "options": [
+      "animal/animal4.png",
+      "animal/animal1.png",
+      "animal/animal2.png",
+      "animal/animal3.png"
+    ]
+  }
+]

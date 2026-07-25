@@ -1,0 +1,12 @@
+[
+  {
+    "prompt_np": "दैनिक दिनचर्या मिलाउनुहोस्",
+    "images": [
+      "sequence/sequence1/sequence1.png",
+      "sequence/sequence1/sequence2.png",
+      "sequence/sequence1/sequence3.png",
+      "sequence/sequence1/sequence4.png",
+      "sequence/sequence1/sequence5.png"
+    ]
+  }
+]

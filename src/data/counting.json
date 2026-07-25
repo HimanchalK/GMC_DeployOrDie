@@ -1,0 +1,58 @@
+[
+  {
+    "theme": "dinosaur",
+    "prompt_np": "३ सम्म गन्नुहोस्",
+    "image": "dinosaur/dinosaur1.png",
+    "target": 3
+  },
+  {
+    "theme": "dinosaur",
+    "prompt_np": "५ सम्म गन्नुहोस्",
+    "image": "dinosaur/dinosaur1.png",
+    "target": 5
+  },
+  {
+    "theme": "dinosaur",
+    "prompt_np": "७ सम्म गन्नुहोस्",
+    "image": "dinosaur/dinosaur1.png",
+    "target": 7
+  },
+
+  {
+    "theme": "vehicle",
+    "prompt_np": "३ सम्म गन्नुहोस्",
+    "image": "vehicle/vehicle1.png",
+    "target": 3
+  },
+  {
+    "theme": "vehicle",
+    "prompt_np": "५ सम्म गन्नुहोस्",
+    "image": "vehicle/vehicle1.png",
+    "target": 5
+  },
+  {
+    "theme": "vehicle",
+    "prompt_np": "७ सम्म गन्नुहोस्",
+    "image": "vehicle/vehicle1.png",
+    "target": 7
+  },
+
+  {
+    "theme": "animal",
+    "prompt_np": "३ सम्म गन्नुहोस्",
+    "image": "animal/animal1.png",
+    "target": 3
+  },
+  {
+    "theme": "animal",
+    "prompt_np": "५ सम्म गन्नुहोस्",
+    "image": "animal/animal1.png",
+    "target": 5
+  },
+  {
+    "theme": "animal",
+    "prompt_np": "७ सम्म गन्नुहोस्",
+    "image": "animal/animal1.png",
+    "target": 7
+  }
+]

@@ -26,14 +26,23 @@ interface ActivityProps {
   skipEmotionCheck?: boolean;
 }
 
-export function Activity({ lessonId, skipEmotionCheck = false }: ActivityProps) {
+export function Activity({
+  lessonId,
+  skipEmotionCheck = false,
+}: ActivityProps) {
   const router = useRouter();
   const [isComplete, setIsComplete] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [unlockedAchievement, setUnlockedAchievement] = useState<Achievement | null>(null);
+  const [unlockedAchievement, setUnlockedAchievement] =
+    useState<Achievement | null>(null);
   const [emotionDone, setEmotionDone] = useState(skipEmotionCheck);
 
-  const childId = useMemo(() => localStorage.getItem("childId"), []);
+  // const childId = useMemo(() => localStorage.getItem("childId"), []);
+  const [childId, setChildId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setChildId(localStorage.getItem("childId"));
+  }, []);
 
   const { lesson, items, loading, error } = useLesson(lessonId);
   const audio = useAudio();
@@ -46,7 +55,13 @@ export function Activity({ lessonId, skipEmotionCheck = false }: ActivityProps) 
     void analytics.startSession({ childId, lessonId });
   }, [childId, lesson, lessonId, analytics]);
 
-  const handleLessonComplete = async ({ score, total }: { score: number; total: number }) => {
+  const handleLessonComplete = async ({
+    score,
+    total,
+  }: {
+    score: number;
+    total: number;
+  }) => {
     if (!childId) return;
     setIsSaving(true);
     try {
@@ -67,7 +82,11 @@ export function Activity({ lessonId, skipEmotionCheck = false }: ActivityProps) 
 
       // Perfect score earns the perfect_score achievement.
       if (total > 0 && score === total) {
-        const perfectRow = await achievements.increment(childId, "perfect_score", 1);
+        const perfectRow = await achievements.increment(
+          childId,
+          "perfect_score",
+          1,
+        );
         if (perfectRow?.status === "unlocked") {
           const meta = getAchievementById("perfect_score");
           if (meta) setUnlockedAchievement(meta);
