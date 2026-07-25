@@ -1,12 +1,21 @@
 import { createClient } from "@/lib/supabase/client";
+import { getChild } from "@/services/children";
 
 const supabase = createClient();
 
 export async function initializeProgress(childId: string) {
-  // Get lessons in learning order
+  const child = await getChild(childId);
+
+  const interestTag = child.interest_tag;
+
   const { data: lessons, error } = await supabase
     .from("lessons")
     .select("id, sort_order")
+    .or(
+      interestTag
+        ? `interest_tag.eq.${interestTag},interest_tag.is.null`
+        : `interest_tag.is.null`,
+    )
     .order("sort_order", { ascending: true });
 
   if (error) throw error;
@@ -51,7 +60,17 @@ export async function getProgress(childId: string) {
 }
 
 export async function completeLesson(childId: string, lessonId: string) {
-  // Complete current lesson
+  const { data: existing, error: checkError } = await supabase
+    .from("child_progress")
+    .select("status")
+    .eq("child_id", childId)
+    .eq("lesson_id", lessonId)
+    .single();
+
+  if (checkError) throw checkError;
+
+  if (existing?.status === "completed") return;
+
   const { error } = await supabase
     .from("child_progress")
     .update({
@@ -63,7 +82,6 @@ export async function completeLesson(childId: string, lessonId: string) {
 
   if (error) throw error;
 
-  // Find next locked lesson
   const { data: progress, error: progressError } = await supabase
     .from("child_progress")
     .select(
@@ -81,7 +99,13 @@ export async function completeLesson(childId: string, lessonId: string) {
 
   const nextLesson = progress
     ?.filter((p) => p.status === "locked")
-    .sort((a: any, b: any) => a.lessons.sort_order - b.lessons.sort_order)[0];
+    .sort((a, b) => {
+      const aLessons = a.lessons as unknown as { sort_order: number }[];
+      const bLessons = b.lessons as unknown as { sort_order: number }[];
+      const aOrder = aLessons[0]?.sort_order ?? 0;
+      const bOrder = bLessons[0]?.sort_order ?? 0;
+      return aOrder - bOrder;
+    })[0];
 
   if (!nextLesson) return;
 
@@ -97,9 +121,18 @@ export async function completeLesson(childId: string, lessonId: string) {
 }
 
 export async function resetProgress(childId: string) {
+  const child = await getChild(childId);
+
+  const interestTag = child.interest_tag;
+
   const { data: lessons, error } = await supabase
     .from("lessons")
     .select("id")
+    .or(
+      interestTag
+        ? `interest_tag.eq.${interestTag},interest_tag.is.null`
+        : `interest_tag.is.null`,
+    )
     .order("sort_order");
 
   if (error) throw error;

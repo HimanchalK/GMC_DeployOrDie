@@ -1,13 +1,15 @@
 // components/dashboard/ProgressCard.tsx
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
 
 interface ProgressCardProps {
   completed: number;
   total: number;
+  className?: string;
 }
 
-export function ProgressCard({ completed, total }: ProgressCardProps) {
+export function ProgressCard({ completed, total, className }: ProgressCardProps) {
   const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   const getEncouragement = () => {
@@ -18,7 +20,7 @@ export function ProgressCard({ completed, total }: ProgressCardProps) {
   };
 
   return (
-    <Card className="w-full rounded-2xl bg-card shadow-subtle">
+    <Card className={cn("w-full rounded-2xl bg-card shadow-subtle", className)}>
       <CardContent className="p-6 sm:p-8 space-y-4">
         <div className="flex items-center justify-between">
           <div>

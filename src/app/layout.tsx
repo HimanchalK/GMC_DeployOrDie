@@ -38,6 +38,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-calm-mode="off"
+      data-dyslexia-font="off"
+      data-colorblind-mode="off"
+      data-large-text="off"
+      data-reduce-motion="off"
+      data-mute-sounds="off"
+      data-high-contrast="off"
       className={cn(
         "h-full",
         "antialiased",
@@ -47,6 +54,30 @@ export default function RootLayout({
         inter.variable,
       )}
     >
+      <head>
+        <script
+          // Sync stored accessibility flags onto <html> before hydration.
+          // Only write a value when the stored flag is truthy ('on'); the
+          // SSR'd defaults above are all 'off', so unmodified flags stay
+          // consistent between server and client and we avoid a
+          // hydration mismatch on the <html> element.
+          dangerouslySetInnerHTML={{
+            __html: `try{
+              var raw = window.localStorage.getItem('hamro:accessibility');
+              if (!raw) { /* nothing stored, keep SSR defaults */ }
+              else {
+                var s = JSON.parse(raw);
+                var m = ['calmMode','dyslexiaFont','colorblindMode','largeText','reduceMotion','muteSounds','highContrast'];
+                var d = ['data-calm-mode','data-dyslexia-font','data-colorblind-mode','data-large-text','data-reduce-motion','data-mute-sounds','data-high-contrast'];
+                var h = document.documentElement;
+                for (var i = 0; i < m.length; i++) {
+                  if (s[m[i]]) { h.setAttribute(d[i], 'on'); }
+                }
+              }
+            } catch (_) {}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

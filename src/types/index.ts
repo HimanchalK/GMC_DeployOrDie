@@ -120,4 +120,10 @@ export interface AccessibilitySettings {
   dyslexiaFont: boolean;
 
   colorblindMode: boolean;
+
+  // Phase 6 additions
+  largeText: boolean;
+  reduceMotion: boolean;
+  muteSounds: boolean;
+  highContrast: boolean;
 }

@@ -1,9 +1,37 @@
-import { supabase } from "@/lib/supabase/client";
+//  /src/services/lessons.ts
+import { createClient } from "@/lib/supabase/client";
+
+const supabase = createClient();
 
 export async function getLessons(interest: string) {
-  return supabase
+  const { data, error } = await supabase
     .from("lessons")
     .select("*")
     .or(`interest_tag.eq.${interest},interest_tag.is.null`)
     .order("sort_order");
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getLessonById(lessonId: string) {
+  const { data, error } = await supabase
+    .from("lessons")
+    .select("*")
+    .eq("id", lessonId)
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+export async function getLessonItems(lessonId: string) {
+  const { data, error } = await supabase
+    .from("lesson_items")
+    .select("*")
+    .eq("lesson_id", lessonId)
+    .order("sort_order");
+
+  if (error) throw error;
+  return data;
 }

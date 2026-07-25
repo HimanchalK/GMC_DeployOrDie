@@ -1,4 +1,5 @@
 // components/landing/Hero.tsx
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Users } from "lucide-react";
 
@@ -12,38 +13,42 @@ export function Hero() {
         {/* Text Content */}
         <div className="flex flex-col gap-6 max-w-xl">
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-medium tracking-wider uppercase text-teal-600">
+            <p className="text-sm font-medium tracking-wider uppercase text-primary">
               हाम्रो साथी
             </p>
             <h1
               id="hero-heading"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-stone-800 leading-[1.1]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-[1.1]"
             >
               Hamro Saathi
             </h1>
-            <p className="text-xl sm:text-2xl font-medium text-teal-600 mt-1">
+            <p className="text-xl sm:text-2xl font-medium text-primary mt-1">
               A Gentle Learning Companion
             </p>
           </div>
 
-          <p className="text-base sm:text-lg text-stone-500 leading-relaxed max-w-md">
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-md">
             A calm, interest-based learning platform designed for children with
             autism. Thoughtfully crafted activities that adapt to each
-            child&apos;s unique pace.
+            child&rsquo;s unique pace.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-4">
-            <Button size="lg" className="gap-2">
-              <Sparkles className="h-5 w-5" />
-              Start Learning
-            </Button>
-            <Button variant="secondary" size="lg" className="gap-2">
-              <Users className="h-5 w-5" />
-              For Parents
-            </Button>
+            <Link href="/onboarding" prefetch aria-label="Start learning">
+              <Button size="lg" className="gap-2">
+                <Sparkles className="h-5 w-5" />
+                Start Learning
+              </Button>
+            </Link>
+            <Link href="/parent" aria-label="For parents" prefetch>
+              <Button variant="secondary" size="lg" className="gap-2">
+                <Users className="h-5 w-5" />
+                For Parents
+              </Button>
+            </Link>
           </div>
 
-          <p className="text-xs text-stone-400 mt-2">
+          <p className="text-xs text-muted-foreground mt-2">
             Free to try · No sign-up required for demo
           </p>
         </div>

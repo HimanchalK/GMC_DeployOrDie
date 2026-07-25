@@ -14,10 +14,10 @@ export function NameForm({ value, onChange, onContinue }: NameFormProps) {
     <div className="w-full space-y-5">
       <div className="space-y-2">
         <h2 className="text-xl font-medium text-foreground">
-          What's your name?
+          What&rsquo;s your name?
         </h2>
         <p className="text-sm text-muted-foreground">
-          We'll use this to personalise your learning space.
+          We&rsquo;ll use this to personalise your learning space.
         </p>
       </div>
 
