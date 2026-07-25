@@ -25,12 +25,21 @@ export async function getLessonById(lessonId: string) {
   return data;
 }
 
-export async function getLessonItems(lessonId: string) {
-  const { data, error } = await supabase
+export async function getLessonItems(
+  lessonId: string,
+  interestTag?: string | null,
+) {
+  let query = supabase
     .from("lesson_items")
     .select("*")
     .eq("lesson_id", lessonId)
     .order("sort_order");
+
+  if (interestTag) {
+    query = query.or(`theme.eq.${interestTag},theme.eq.universal`);
+  }
+
+  const { data, error } = await query;
 
   if (error) throw error;
   return data;

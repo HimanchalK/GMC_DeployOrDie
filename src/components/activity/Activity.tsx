@@ -20,6 +20,7 @@ import { getAchievementById } from "@/services/achievement";
 import type { Achievement } from "@/types/achievement";
 import { EmotionCheck } from "@/components/emotion/EmotionCheck";
 import { recordEmotion } from "@/services/emotion";
+import { getChild } from "@/services/children";
 
 interface ActivityProps {
   lessonId: string;
@@ -39,12 +40,26 @@ export function Activity({
 
   // const childId = useMemo(() => localStorage.getItem("childId"), []);
   const [childId, setChildId] = useState<string | null>(null);
+  const [interestTag, setInterestTag] = useState<string | null | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
-    setChildId(localStorage.getItem("childId"));
+    const id = localStorage.getItem("childId");
+    setChildId(id);
+    if (id) {
+      getChild(id)
+        .then((child) => setInterestTag(child.interest_tag))
+        .catch((err) => {
+          console.error("Failed to load child interest", err);
+          setInterestTag(null);
+        });
+    } else {
+      setInterestTag(null);
+    }
   }, []);
 
-  const { lesson, items, loading, error } = useLesson(lessonId);
+  const { lesson, items, loading, error } = useLesson(lessonId, interestTag);
   const audio = useAudio();
   const achievements = useAchievement(childId);
   const analytics = useAnalytics(childId);

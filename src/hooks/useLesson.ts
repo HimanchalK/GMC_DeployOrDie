@@ -2,13 +2,18 @@ import { useEffect, useState } from "react";
 import { getLessonById, getLessonItems } from "@/services/lessons";
 import { Lesson, LessonItem } from "@/types/activity";
 
-export function useLesson(lessonId: string) {
+export function useLesson(
+  lessonId: string,
+  interestTag: string | null | undefined,
+) {
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [items, setItems] = useState<LessonItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
+    if (interestTag === undefined) return; // still resolving, don't fetch yet
+
     let cancelled = false;
 
     async function load() {
@@ -16,7 +21,7 @@ export function useLesson(lessonId: string) {
       try {
         const [lessonData, itemsData] = await Promise.all([
           getLessonById(lessonId),
-          getLessonItems(lessonId),
+          getLessonItems(lessonId, interestTag),
         ]);
 
         if (!cancelled) {
@@ -34,7 +39,7 @@ export function useLesson(lessonId: string) {
     return () => {
       cancelled = true;
     };
-  }, [lessonId]);
+  }, [lessonId, interestTag]);
 
   return { lesson, items, loading, error };
 }
