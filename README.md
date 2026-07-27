@@ -2,7 +2,7 @@
 
 **A calm, interest-based e-learning platform for autistic children in Nepal.**
 
-Built for [Hackathon Name] — theme: _Empowering Education Through Technology_.
+Built for GMC internal hackathon — theme: _Empowering Education Through Technology_.
 
 ---
 
@@ -85,7 +85,7 @@ src/
 ├── app/
 │   ├── (child)/            # onboarding, dashboard, activity engine, settings
 │   ├── (parent)/            # parent dashboard
-│   └── api/social-story/    # LLM-backed story generation endpoint
+│   └── api/social-story/    # LLM-backed story generation endpoint    # planned feature
 ├── components/
 │   ├── activity/             # Matching / Counting / Sequencing activities
 │   ├── achievement/          # Achievement cards, popups
